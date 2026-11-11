@@ -75,6 +75,13 @@ You can customize the models, Ollama endpoint, or retrieval count directly at th
 | `CHAT_MODEL` | `"qwen3:4b-instruct"` | LLM used to generate final answers. |
 | `k` (in `retrieve()`) | `3` | Number of top matching chunks passed as context. |
 
-## 📝 License
+## 🗺️ Roadmap & Future Improvements
 
-This project is open-source and available under the [MIT License](LICENSE).
+Ideas to make this script even more capable while keeping it lightweight:
+
+- [ ] **Vector Caching:** Save embeddings to disk (`np.save`) and track file hashes so documents aren't re-embedded on every startup.
+- [ ] **Smarter Chunking:** Split by Markdown headings (`#`, `##`) or character count with overlap to preserve context across paragraph boundaries.
+- [ ] **Source Citations:** Track source filenames for each chunk and instruct the LLM to cite where each answer came from.
+- [ ] **Streaming & Chat History:** Enable `"stream": True` for real-time token output and maintain multi-turn conversation context.
+- [ ] **Similarity Score Threshold:** Filter out low-scoring chunks (e.g., `< 0.4`) to avoid passing irrelevant context on out-of-scope questions.
+- [ ] **Expanded File Support:** Use `rglob()` for nested subfolders and add support for `.txt` and `.pdf` files.
